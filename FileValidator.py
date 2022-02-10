@@ -18,7 +18,7 @@ def validateMembers(input):
 
 # function to receive a list of strings and determine whether these match RE for ranks section
 def validateRanks(input):
-    patternString = r"ranks\[\]={({\"[a-zA-Z0-9\.\-_()\[\]]+?\",\"[0-9]+?\",\"\w+?\"},)+{\"[a-zA-Z0-9\.\-_()\[\]]+?\",\"[0-9]+?\",\"\w+?\"}};"
+    patternString = r"ranks\[\]={({\"[a-zA-Z0-9\.\-_()<>\[\]]+?\",\"[0-9]+?\",\"\w+?\"},)+{\"[a-zA-Z0-9\.\-_()<>\[\]]+?\",\"[0-9]+?\",\"\w+?\"}};"
     pattern = re.compile(patternString, re.M)
 
     processLines = "".join(("".join(input)).split())
@@ -60,7 +60,7 @@ def validateFile(input):
                 Lines.remove(line)
 
         # regular expression to validate file
-        patternString = r"^members\[\]={(\"[0-9]+\",)+\"[0-9]+\"};ranks\[\]={({\"[a-zA-Z0-9\.\-_()\[\]]+?\",\"[0-9]+?\",\"\w+?\"},)+{\"[a-zA-Z0-9\.\-_()\[\]]+?\",\"[0-9]+?\",\"\w+?\"}};vehicles\[\]={({\".*\",[0-9]+},)+{\".*\",[0-9]+}};"
+        patternString = r"^members\[\]={(\"[0-9]+\",)+\"[0-9]+\"};ranks\[\]={({\"[a-zA-Z0-9\.\-\[\]_()<>\[\]]+?\",\"[0-9]+?\",\"\w+?\"},)+{\"[a-zA-Z0-9\.\-_()<>\[\]\[\]]+?\",\"[0-9]+?\",\"\w+?\"}};vehicles\[\]={({\".*\",[0-9]+},)+{\".*\",[0-9]+}};"
         pattern = re.compile(patternString, re.M)
 
         processLines = "".join(("".join(Lines)).split())
